@@ -36,7 +36,7 @@ Following environment variables must be set:
 ]
   ```
 
-## Issue 1
+## Issue 1 - depend_list
 
 `depend_list` is defined in [opentelekomcloud_fgs_function_v2](https://registry.terraform.io/providers/opentelekomcloud/opentelekomcloud/latest/docs/resources/fgs_function_v2#depend_list-4) as 
 
@@ -65,14 +65,15 @@ Question:
 `opentelekomcloud_fgs_dependency_version_v2` are both the same value.
 Shouldn't `dependency_id` be same as basename of zip?
 
-## Issue 2
+## Issue 2 - not possible to remove dependency
 
 It`s not possible to remove dependency from function after it has been applied once.
 
-## Issue 3
+## Issue 3 - error if code has not been changed
 
 On second tf_apply or on changes on depend_list, following error
-occurs. (This error occurs, if function code has not been changed)
+occurs. 
+
 
 ```
  Error: error updating code of function: Bad request with: [PUT https://functiongraph.eu-de.otc.t-systems.com/v2/d52e41d2434941b194ce3f91b1b12f8a/fgs/functions/urn:fss:eu-de:d52e41d2434941b194ce3f91b1b12f8a:function:default:fg-tf-bug-myfunction/code], error message: {
@@ -83,3 +84,7 @@ occurs. (This error occurs, if function code has not been changed)
 │  }
 │ }
 ```
+
+This error always occurs, if there is no change to function code.
+
+On changes to other settings this message should be ignored.
