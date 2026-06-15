@@ -1,0 +1,23 @@
+{
+  "name": "function",
+  "version": "1.0.0",
+
+  "main": "src/index.js",
+  "type": "commonjs",
+  "engines": {
+    "node": "20.15.1"
+  },
+  "cpu": [
+    "x64"
+  ],
+  "scripts": {
+    "postpack": "rm -f ${npm_package_name}.zip && tarball=\"${npm_package_name}-${npm_package_version}.tgz\"; tar -tf $tarball | sed 's/^package\\///' | zip -@r ${npm_package_name}.zip; rm $tarball"
+  },
+  "devDependencies": {},
+  "dependencies": {},
+  "files": [
+    "src/**/*",
+    "lib/**/*"
+  ],
+  "bundleDependencies": []
+}

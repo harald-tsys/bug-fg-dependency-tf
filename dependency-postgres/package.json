@@ -1,0 +1,21 @@
+{
+  "name": "postgres-dependency",
+  "version": "8.20.0",
+  "description": "Package for postgres dependency",
+  "main": "",
+  "scripts": {
+    "prepack": "npm install",
+    "postpack": "export DEPENDENCY_NAME=${npm_package_name}-${npm_package_version} && rm -f ${DEPENDENCY_NAME}.zip  && tar -tf ${DEPENDENCY_NAME}.tgz | sed 's/^package\\///' | zip -@r ${DEPENDENCY_NAME}.zip; rm ${DEPENDENCY_NAME}.tgz"    
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "pg": "^8.20.0"
+  },
+  "bundleDependencies": [
+    "pg"
+  ],
+  "files": []
+}
