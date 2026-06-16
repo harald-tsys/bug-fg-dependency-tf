@@ -52,9 +52,10 @@ depend_list = [
 returned by of
 POST https://functiongraph.eu-de.otc.t-systems.com/v2/${OTC_SDK_PROJECTID}/fgs/dependencies/version
 
-## Issue 2 - not possible to remove dependency
+## Issue 2 - not possible to remove dependency [GitHub Issue 3425](https://github.com/opentelekomcloud/terraform-provider-opentelekomcloud/issues/3425)
 
 It`s not possible to remove dependency from function after it has been applied once.
+
 
 ## Issue 3 - error if code has not been changed
 
