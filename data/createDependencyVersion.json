@@ -1,0 +1,6 @@
+{
+  "depend_file" : "xx",
+  "depend_type" : "zip",
+  "runtime" : "Node.js20.15",
+  "name" : "Test1"
+}

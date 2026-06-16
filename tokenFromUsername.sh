@@ -111,6 +111,9 @@ http_code=$(curl -sS \
 ${OTC_IAM_ENDPOINT}/auth/tokens?nocatalog=true)
 curl_status=$?
 
+
+echo "HTTP status code from IAM: ${http_code}" >&2
+
 token=$(grep -i '^X-Subject-Token:' "${headers_file}" | awk '{print $2}' | tr -d '\r')
 rm -f "${headers_file}"
 

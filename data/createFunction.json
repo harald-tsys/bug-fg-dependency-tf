@@ -1,0 +1,13 @@
+{
+  "func_name" : "test-function",
+  "package" : "default",
+  "runtime" : "Node.js20.15",
+  "handler" : "index.handler",
+  "type" : "v2",
+  "memory_size" : 128,
+  "timeout" : 3,
+  "code_type" : "inline",
+  "func_code" : {
+    "file" : "xxxxx"
+  }
+}
