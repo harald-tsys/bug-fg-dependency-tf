@@ -19,7 +19,10 @@ Following environment variables must be set:
 
 ## Issue 1 - depend_list - [GitHub Issue 3423](https://github.com/opentelekomcloud/terraform-provider-opentelekomcloud/issues/3423)
 
-After setting environment variables, execute:
+To reproduce:
+
+1. Set environment variables as described above
+2. Apply changes
 
 ```
 make tf_apply
@@ -52,9 +55,47 @@ depend_list = [
 returned by of
 POST https://functiongraph.eu-de.otc.t-systems.com/v2/${OTC_SDK_PROJECTID}/fgs/dependencies/version
 
+
+3. clean up
+```
+make tf_destroy
+```
+
+
+
+
 ## Issue 2 - not possible to remove dependency [GitHub Issue 3425](https://github.com/opentelekomcloud/terraform-provider-opentelekomcloud/issues/3425)
 
 It`s not possible to remove dependency from function after it has been applied once.
+
+
+To reproduce:
+
+1. Set environment variables as described above
+
+2. apply with depend_list set
+```
+make tf_apply
+```
+
+3. change
+in [./terraform/function.tf](./terraform/function.tf) set 
+
+```
+depend_list = []
+```
+
+4. apply again
+```
+make tf_apply
+```
+
+View result in FunctionGraph console.
+
+5. clean up
+```
+make tf_destroy
+```
 
 
 ## Issue 3 - error if code has not been changed
