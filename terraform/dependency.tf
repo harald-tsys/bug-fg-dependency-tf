@@ -6,7 +6,7 @@ resource "opentelekomcloud_fgs_dependency_version_v2" "test" {
   description = "Dependency package for PostgreSQL client v8.20.0 "
 }
 
-output "resource_id" {
+output "dependency_resource_id" {
   value = opentelekomcloud_fgs_dependency_version_v2.test.id  
 }
 
@@ -14,14 +14,14 @@ output "dependency_id" {
   value = opentelekomcloud_fgs_dependency_version_v2.test.dependency_id
 }
 
-output "dependancy_package_version" {
+output "dependency_package_version" {
   value = opentelekomcloud_fgs_dependency_version_v2.test.version
 }
 
-output "dependancy_download_link" {
+output "dependency_download_link" {
   value = opentelekomcloud_fgs_dependency_version_v2.test.download_link
 }
 
-output "dependancy_correct_id" {
+output "dependency_correct_id" {
   value = trimsuffix(basename(opentelekomcloud_fgs_dependency_version_v2.test.download_link), ".zip")
 }

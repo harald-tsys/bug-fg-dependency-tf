@@ -98,7 +98,7 @@ make tf_destroy
 ```
 
 
-## Issue 3 - error if code has not been changed
+## Issue 3 - error if code has not been changed [GitHub Issue 3426](https://github.com/opentelekomcloud/terraform-provider-opentelekomcloud/issues/3426)
 
 On second tf_apply or on changes on depend_list, following error
 occurs. 
@@ -117,3 +117,46 @@ occurs.
 This error always occurs, if there is no change to function code.
 
 On changes to other settings this message should be ignored.
+
+
+To reproduce:
+
+1. Set environment variables as described above
+
+2. apply 
+```
+make tf_apply
+```
+
+
+3. apply again
+```
+make tf_apply
+```
+
+-> error
+
+```
+opentelekomcloud_fgs_function_v2.MyFunction: Modifying... [id=urn:fss:eu-de:d52e41d2434941b194ce3f91b1b12f8a:function:default:fg-tf-bug-myfunction:latest]
+╷
+│ Error: error updating code of function: Bad request with: [PUT https://functiongraph.eu-de.otc.t-systems.com/v2/d52e41d2434941b194ce3f91b1b12f8a/fgs/functions/urn:fss:eu-de:d52e41d2434941b194ce3f91b1b12f8a:function:default:fg-tf-bug-myfunction/code], error message: {
+│  "error_code": "FSS.1011",
+│  "error_msg": "zip: not a valid zip file",
+│  "details": {
+│   "error_msg": "Invalid function code."
+│  }
+│ }
+│ 
+│   with opentelekomcloud_fgs_function_v2.MyFunction,
+│   on function.tf line 4, in resource "opentelekomcloud_fgs_function_v2" "MyFunction":
+│    4: resource "opentelekomcloud_fgs_function_v2" "MyFunction" {
+│ 
+╵
+make: *** [Makefile:25: tf_apply] Error 1
+```
+
+
+5. clean up
+```
+make tf_destroy
+```
