@@ -25,3 +25,7 @@ output "dependency_download_link" {
 output "dependency_correct_id" {
   value = trimsuffix(basename(opentelekomcloud_fgs_dependency_version_v2.test.download_link), ".zip")
 }
+
+output "version_id" {
+  value = opentelekomcloud_fgs_dependency_version_v2.test.version_id
+}

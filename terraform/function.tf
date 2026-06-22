@@ -28,14 +28,16 @@ resource "opentelekomcloud_fgs_function_v2" "MyFunction" {
   }
 
   depend_list = [
-    # should:
+    # not working:
     # opentelekomcloud_fgs_dependency_version_v2.test.dependency_id
 
     # not working:
     # opentelekomcloud_fgs_dependency_version_v2.test.id
 
     # working
-    trimsuffix(basename(opentelekomcloud_fgs_dependency_version_v2.test.download_link), ".zip")
+    #trimsuffix(basename(opentelekomcloud_fgs_dependency_version_v2.test.download_link), ".zip")
+    # working since version 1.36.69
+    opentelekomcloud_fgs_dependency_version_v2.test.version_id
   ]
 
 }
